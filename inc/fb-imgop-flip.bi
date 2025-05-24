@@ -8,7 +8,7 @@ function flipH( b as Fb.Bitmap ) as Fb.Bitmap
   
   for y as integer = 0 to res.height - 1
     for x as integer = 0 to res.width - 1
-      res.pixels[ y * ppitch + ( res.width - x ) ] = b.pixels[ y * ppitch + x ]
+      res.pixels[ y * ppitch + ( res.width - 1 - x ) ] = b.pixels[ y * ppitch + x ]
     next
   next
   
@@ -22,7 +22,7 @@ function flipV( b as Fb.Bitmap ) as Fb.Bitmap
   
   for y as integer = 0 to res.height - 1
     for x as integer = 0 to res.width - 1
-      res.pixels[ ( res.height - y ) * ppitch + x ] = b.pixels[ y * ppitch + x ]
+      res.pixels[ ( res.height - 1 - y ) * ppitch + x ] = b.pixels[ y * ppitch + x ]
     next
   next
   
