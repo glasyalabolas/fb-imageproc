@@ -51,7 +51,7 @@ namespace Fb
     
     memcpy( _
       cast( ubyte ptr, _image ) + sizeof( Fb.Image ), _
-      cast( ubyte ptr, b ) + sizeof( Fb.Image ), _
+      cast( ubyte ptr, b._image ) + sizeof( Fb.Image ), _
       b._image->pitch * b._image->height )
   end constructor
   
