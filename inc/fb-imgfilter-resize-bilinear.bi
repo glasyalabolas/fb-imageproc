@@ -12,7 +12,7 @@ function resize_bilinear( src as Fb.Bitmap, w2 as long, h2 as long ) as Fb.Bitma
   dim as single x_ratio = ( w - 1 ) / w2
   dim as single y_ratio = ( h - 1 ) / h2
   dim as single x_diff, y_diff
-  dim as long red, green, blue
+  dim as long red, green, blue, alpha
   
   dim as long offset
   
@@ -36,8 +36,10 @@ function resize_bilinear( src as Fb.Bitmap, w2 as long, h2 as long ) as Fb.Bitma
               RGBA_G( C ) * ( y_diff ) * ( 1 - x_diff ) + RGBA_G( D ) * ( x_diff * y_diff )
       blue  = RGBA_B( A ) * ( 1 - x_diff ) * ( 1 - y_diff ) + RGBA_B( B ) * ( x_diff ) * ( 1 - y_diff ) + _
               RGBA_B( C ) * ( y_diff ) * ( 1 - x_diff ) + RGBA_B( D ) * ( x_diff * y_diff )
+      alpha = RGBA_A( A ) * ( 1 - x_diff ) * ( 1 - y_diff ) + RGBA_A( B ) * ( x_diff ) * ( 1 - y_diff ) + _
+              RGBA_A( C ) * ( y_diff ) * ( 1 - x_diff ) + RGBA_A( D ) * ( x_diff * y_diff )
       
-      res.pixels[ i * dpitch + j ] = rgb( red, green, blue )
+      res.pixels[ i * dpitch + j ] = rgba( red, green, blue, alpha )
       
       next
     next
